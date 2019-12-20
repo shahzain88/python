@@ -1,0 +1,10 @@
+b = input('Witch password do yo want write here =>')
+print (b)
+
+a = input('Write your passworld again here=>')
+print(a)
+  
+if b == a :
+    print('got your password,thanks')
+else:
+    print("you have done mistake so get out")
