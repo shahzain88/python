@@ -1,0 +1,7 @@
+bearth_year = input('what year were you born? ')
+import datetime
+year = datetime.datetime.today().year
+
+age =int(year) - int(bearth_year)
+
+print(f'your age is: {age} ')
