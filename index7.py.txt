@@ -1,0 +1,32 @@
+ print(type(2 + 4))
+ print(type(0.0004))
+ print(2*4)
+ print(type(2/4)) 
+ print(2**2)
+ print(4//5)
+ print(2%2)
+ print(round(19999.5))
+ print(abs(-3.4))
+#____________________
+
+
+
+
+ print(bin(88))
+ print(int("0b1011000", 2))
+ print(bin(88))
+
+
+#______________________
+
+
+ password = input('Witch password do yo want write here =>')
+ print (password)
+
+ second_password = input('Write your passworld again here=>')
+ print(second_password)
+  
+ if password == second_password :
+     print('got your password,thanks')
+ else:
+     print("password was not correct")
