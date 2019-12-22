@@ -1,0 +1,7 @@
+user_name = input('What is your username :')
+password = input('what is your password  :')
+
+lenth = len(password)
+protected_password = '*' * int(lenth)
+
+print(f"{user_name},your password is \"{protected_password}\",It is \"{lenth}\" latter long." )
