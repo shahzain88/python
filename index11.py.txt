@@ -1,0 +1,10 @@
+matrex = [[1,2,3],[4,5,6],[3,0,8],]
+print(matrex[2] [0])
+print(matrex[0] [1])
+print('________________________________________')
+basket = ['w','e','e','g','a','v','d','A','D']
+print(basket.index('e',0,6))
+print('w' in basket)
+print('s' in basket)
+print(basket.count('e'))
+print(basket.count('As'))
