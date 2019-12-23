@@ -1,0 +1,5 @@
+basket = ['e','t','f','e','a','a','d','f']
+# basket.sort()
+print(basket)
+new_basket = sorted(basket)
+print(new_basket)
