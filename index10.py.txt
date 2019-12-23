@@ -1,0 +1,23 @@
+basket = [1,2,3,4,5]
+basket.append(100)
+basket.insert(0,666)
+new_list = basket
+print(basket)
+print(new_list)
+print("____________________________________")
+basket2 = [1,2,3,4,5]
+basket2.insert(2,100)
+print(basket2)
+print("___________________")
+basket3 = [1,2,3,4,5]
+basket3.extend([100,200,400,700,88])
+print(basket3)
+print("_______________________________")
+print("removes")
+new_list = basket3.pop(0)
+print(basket3)
+basket3.remove(3)
+print(basket3)
+basket3.clear()
+print(basket3)
+print(new_list)
