@@ -1,0 +1,4 @@
+basket = ['a','s','f','e','l','g',"v"]
+basket.reverse()
+basket.sort()
+print(basket)
