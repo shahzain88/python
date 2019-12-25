@@ -1,0 +1,15 @@
+user_lists = ['jone','marke','budy']
+user_age_list = [55,66,77]
+user3 = input('what is your name ')
+user3_age = input('what is your age ')
+user = [user3]
+print(f"hi {user3} nice to meet you")
+user_lists += user
+look = input(str('Can I help you '))
+look_chacked = look in user_lists
+if look_chacked == 1 :
+ print(f'looking for it ......')
+ print(f"{look} this is it ")
+ print('It is in list')
+else:
+  print('error!')
