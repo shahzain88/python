@@ -1,0 +1,4 @@
+print(list(range(100)))
+sentence = ' '
+new_sentence = sentence.join(['Hi','my','name','is','shahZain'])
+print(new_sentence)
