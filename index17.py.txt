@@ -1,0 +1,21 @@
+dictionary = {
+'a':1,
+'b':2,
+'c':3,
+}
+print(dictionary['a'])
+print('____________________________')
+my_list = [
+ {
+  'a':[7,8,9],
+  'b':'heooll',
+  'c':True, 
+ } ,
+ {
+  'd':[10,11,12],
+  'e':'heyy hello',
+  'f':None,
+ }
+]
+print(my_list[0]['a'][2])
+print(my_list[1]['d'][0])
