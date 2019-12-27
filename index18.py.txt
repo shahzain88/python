@@ -1,0 +1,31 @@
+user = {
+  "name":"shahzain",
+  "age":17,
+  "wepon":"hand gun"  ,
+}
+print(user["name"],["age"],["wepon"])
+user2 = {
+  123 : [1,3,4],
+  True : 'hello',
+  "hello" : True
+}
+print(123,True,"hello")
+user3 = {
+  '123' : [1,2,3],
+  '123' : " hello"
+}
+print(user3['123'])
+user4={
+  "name": "Bob",
+  "health": 60
+}
+print(user4.get("age",1000))
+uaer5 = {
+  "name" : "john",
+  "health" : 33,
+  "age": 77
+
+}
+print(user.get("age",32))#IF age = None , The default age is 32.
+user6 = dict(name = "jonson",age = 88,wepon = "gun")
+print(user6)
