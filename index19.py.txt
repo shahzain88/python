@@ -1,0 +1,20 @@
+user = {
+"basket" : [1,2,3],
+'greet' : 'konnichiwa',
+'age' : 28
+}
+print('basket' in user)
+print('size' in user)
+print( 'age' in user.keys())
+print('konnichiwa' in user.values())
+print(user.items())
+user2 = user.copy()
+user2.clear()
+print(user)
+print(user2)
+print(user.pop('age'))
+print(user)
+print(user.popitem())
+user.update({'greet' : "hello"} )
+user.update({'gun' : "handgun"})
+print(user)
