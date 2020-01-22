@@ -1,0 +1,12 @@
+user_dict = {
+  "Tanaka88" : [{'age' : 82,'basket' : [1,2,3,4,5,6,7],'wepons' : 'handgun'}],
+  "zain" : [{'age' : 17,'basket' : [3,7,9,5,4,0,1,5],'wepons' : None}],
+  "yokotsuka" : [{'age' : 18,'basket' : [3,2,0,4,5,2,0,7,1],'wepons' : 'smail_face'}]
+} 
+# my_set = {1,2,3,4,5}
+# your_set = {4,5,6,7,8,9}
+# print(my_set.difference(your_set))
+# print(my_set.discard(1))
+# print(my_set)
+
+print(user_dict['zain'][0]['basket']) #this is thre why for taleing "basket" from any user in "user_dict"
