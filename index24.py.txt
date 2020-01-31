@@ -1,0 +1,10 @@
+s1={
+  'ali':{'age':12}, 'firon':{'death':100, 'gender':'male'}
+}
+
+print(s1['firon']['gender'])
+
+user_dict = {
+  'Tanaka88' : {'age' : 82,'basket' : [1,2,3,4,5,6,7],'wepons' : 'handgun'}
+}
+print(user_dict['Tanaka88']['age'])
