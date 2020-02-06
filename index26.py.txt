@@ -1,0 +1,11 @@
+is_old = True
+is_licenced = True
+
+if is_old and is_licenced:
+    print("Your old enough to drive this car and your licenced for this car!")
+else:
+    print(
+        "Your NOT the age to drive this car AND you DON'T have the licence to drive"
+    )
+
+print("okok")
