@@ -1,0 +1,10 @@
+is_magicion = input("are you magicion?(write \"1\"if yes,if no write \"0\">>>")
+is_expert =  input("are you master?(write \"1\"if yes,if no write \"0\">>>")
+if is_magicion and is_expert  :
+  print('You are a master magicion!')
+elif is_magicion :
+  print("at least your getting there  :(")
+elif is_magicion != 1:
+  print("YOU nead magic power ")
+else:
+  print("You have to do more to get there")

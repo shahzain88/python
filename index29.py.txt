@@ -1,0 +1,8 @@
+is_magicion = False
+is_expert =  False
+if is_magicion and is_expert  :
+  print('You are a master magicion!')
+elif is_magicion and not(is_expert) :
+  print("at least your getting there  :(")
+elif not is_magicion:
+  print("YOU need magic power ")
