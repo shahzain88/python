@@ -1,0 +1,7 @@
+is_friend = True
+can_messag = "Your allowed to masseg " if is_friend else "Your not allowed to messeg "
+print(can_messag)
+is_name = "zain"
+this_name = input("whats your NameError>>>>>")
+right_name = "Youe the right parson" if is_name == this_name else "Your not the right parson"
+print(right_name)
