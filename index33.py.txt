@@ -1,0 +1,4 @@
+selaries = [('a',1),('b',2),('c',3)]
+
+for latter,num in selaries :
+  print(num)
