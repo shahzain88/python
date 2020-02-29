@@ -1,0 +1,4 @@
+selaries = {"jhon":10,"lisa":8,"sebasechan":100}
+
+for employee in selaries :
+  print(employee,'has the selary of :', selaries[employee] ," \n  ")
