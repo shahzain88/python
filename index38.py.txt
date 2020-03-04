@@ -1,0 +1,5 @@
+while True :
+  response = input("Say somthing :>")
+  if response == "bye"  :
+    break
+    
