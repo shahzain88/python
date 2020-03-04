@@ -1,0 +1,6 @@
+my_list = [1,2,3]
+for i in my_list:
+  continue
+  print(i)
+print("it just continues the looping over My_list and not printing [i]\n when it comes continue it gose back to loop")
+   
