@@ -1,0 +1,5 @@
+my_list = [1,2,3]
+for i in my_list:
+  #thinking about this
+  pass
+print("it dose not give an error even noting to loop And just gose to next line_code ")
