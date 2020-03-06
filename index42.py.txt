@@ -1,0 +1,17 @@
+print("give me the latter that you want me to looke for duplicates")
+                #here ,inputting the latters or sentence
+inputted_list = input("here ==>")
+some_list = []
+                # gust divide to each latter
+for eatch_latter in inputted_list:
+    some_list.append(eatch_latter)
+
+same_latter = []  #going to put same latters!!
+for latter in some_list:
+    #here ,putting the counted number of latter in some_list
+    counted_latter = some_list.count(latter)
+    if counted_latter > 1:
+        #chacking if the latter is not in the same_latter then append the latter in it.
+        if latter not in same_latter:
+            same_latter.append(latter)
+print(same_latter)
