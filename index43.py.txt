@@ -1,0 +1,28 @@
+picther = [
+[0,0,0,1,0,0,0],
+[0,0,1,1,1,0,0],
+[0,1,1,1,1,1,0],
+[1,1,1,1,1,1,1],
+[0,0,0,1,0,0,0],
+[0,0,0,1,0,0,0]
+]
+def tree() :
+  for row in picther :
+    for picxl in row:
+      if picxl == 0:
+        print(" ",end="")
+      else :
+        print("+",end="")
+    print(" ") 
+# aske for ever untill the condition gets forfilled
+while True  :
+  aske = input("tell me if you want to print lovely tree!!,  yes or no \n => ")
+  if aske == "yes" :
+    tree()
+    break
+  elif aske == "no":
+    print("byee!!")
+    break
+  else:
+    print("anser with yes or no !!")
+    continue
