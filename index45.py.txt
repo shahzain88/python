@@ -1,0 +1,11 @@
+def greet_to(name="tanaka",emoji=":)") :
+  print(f"こんにちは{name}{emoji}")
+
+print('TO whom you want to send greeting?')
+name = input('give a name of poeson.    here   ==>')
+emoji = input('witch enoji you want to send him,her?  make it here :=>   ')
+
+greet_to(name,emoji)
+greet_to()
+
+greet_to(emoji= ':"":',name= "emily")
