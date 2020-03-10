@@ -1,0 +1,8 @@
+def is_even(num):
+  '''
+  info: it gives "true"if the "num"was even.
+  '''
+  return num % 2 == 0
+
+  
+print(is_even(10))
