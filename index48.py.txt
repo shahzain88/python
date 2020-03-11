@@ -1,0 +1,10 @@
+def super_func(name,*args,i='hi',**kwargs):
+
+  totle = 0
+  for items in kwargs.values():
+    totle += items
+
+  return sum(args) + totle
+
+value_of_func = super_func('andy' ,  1,2,3,4,5  , num1 = 5, num2 = 10 ) 
+print(value_of_func)
