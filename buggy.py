@@ -5,10 +5,8 @@ import wikipedia
 import webbrowser
 import os
 import smtplib
-from email.mime import audio
-
 print("Initializing Buggy.")
-MASTER = "ShahZain88"
+MASTER = "SyedShahZain"
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -47,34 +45,51 @@ def takeComand():
         query = r.recognize_google(audio, language='en-us')
         print(f"{MASTER} said:{query}\n")
         speak(f"{MASTER} said:{query}\n")
-    except Exception as er:
-        print("Say that again please .", er)
+    except Exception:
+        print("Say that again please .")
         speak("Say that again please .")
         query = None
     return query
 
 
-def main():
-    speak("Initializing Buggy.....")
-    wishMe()
+speak("Initializing Buggy.....")
+wishMe()
+while True:
     query = takeComand()
-
-    if 'wikipedia' in query.lower():
+    query
+    if query == None:
+        speak("speak some thing")
+        print("speak some thing")
+    elif 'quit'in query.lower():
+        speak("ok bye")
+        print("ok bye")
+        break
+    elif 'wikipedia' in query.lower():
         speak("Searching wikipedia...")
         query = query.replace("wikipedia", "")
         results = wikipedia.summary(query, sentences=2)
         print(results)
         speak(results)
 
-    elif "open youtube" in query.lower():
+    elif "open" and "youtube" in query.lower():
         url = 'http://youtube.com/'
         chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
         webbrowser.get(chrome_path).open(url)
 
-    elif "open google" in query.lower():
+    elif "open" and "google" in query.lower():
         url = 'http://google.com/'
         chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
         webbrowser.get(chrome_path).open(url)
+
+    elif "search" in query.lower():
+        speak("Searching in google..")
+        print("Searching in Google..")
+        query = query.replace("search" or "google", "")
+        new = 2
+        url = 'https://www.google.com/search?q='
+        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+        print("Searched   " + query)
+        webbrowser.get(chrome_path).open(url + query, new=new)
 
     elif "play music" in query.lower():
         songs_dir = "C:\\Users\\ShahZain\\Downloads\\Music"
@@ -82,13 +97,30 @@ def main():
         print(songs)
         os.startfile(os.path.join(songs_dir, songs[0]))
 
-    elif "the time" in query.lower():
+    elif "what"and "time" in query.lower():
         strTime = datetime.datetime.now().strftime("%H:%M:%S")
         speak(f"{MASTER} the time is {strTime}.")
 
-    elif "open vs code" in query.lower:
+    elif "open vs code" in query.lower():
         code_path = "C:\\Users\\ShahZain\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code\\code.exe"
         os.startfile(code_path)
 
+    elif "read this " in query.lower():
+        speak("What do you want me to read? paste be low.")
+        read = input("What do you want me to read? paste be low.\n", ">>>")
+        speak(read)
+        speak("i hope that helps you. But you have to try once, ok!")
+    else:
+        speak("wikipedia says")
+        print("wikipedia says")
+        results = wikipedia.summary(query, sentences=2)
+        print(results)
+        speak(results)
 
-main()
+        speak("could not  understand you , so i am searching in google ")
+        print("could not  understand you , so i am searching in google ")
+        new = 2
+        url = 'https://www.google.com/search?q='
+        chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+        print("Searched   " + query)
+        webbrowser.get(chrome_path).open(url + query, new=new)
