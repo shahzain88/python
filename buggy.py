@@ -6,7 +6,7 @@ import webbrowser
 import os
 import smtplib
 print("Initializing Buggy.")
-MASTER = "SyedShahZain"
+MASTER = "ShahZain88"
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
