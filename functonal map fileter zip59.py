@@ -1,5 +1,8 @@
 my_list = [1, 2, 3]
-your_list = [10, 20, 30]
+# even if this is tupple it will give you answer
+your_list = {
+    [(10), (20), (30)]
+}
 
 
 def multiply_by2(item):
