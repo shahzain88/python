@@ -9,5 +9,19 @@ def fib(number):
     print(f"These are F0 to F{i}")
 
 
-for x in fib(21):
-    print(x)
+# for x in fib(21):
+#     print(x)
+
+def fib2(number):
+    a = 0
+    b = 1
+    result = []
+    for i in range(number + 1):
+        result.append(a)
+        temp_a = a
+        a = b
+        b = temp_a + b
+    return result
+
+
+print(fib2(20))
