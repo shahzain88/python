@@ -4,11 +4,9 @@ import datetime
 import wikipedia
 import webbrowser
 import os
-import smtplib
 import random
-import translator_en_jp as trja
 MASTER = "Zain"
-
+Ai_name = "バギー"
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
 # [0]is english woman, [3] is japanese woman ,no other voices
@@ -34,7 +32,7 @@ def wishMe():
     # speak(f"I am {Ai_name} ! How can i help you.")
 
 
-def takeComand():
+def takeComand(speak_pleas_list_choice):
 
     r = sr.Recognizer()
 
@@ -47,7 +45,6 @@ def takeComand():
         print("処理中です…")
         speak("処理中です…")
         query = r.recognize_google(audio, language='ja-ja')
-        print(query)
     except Exception:
         print("もう一度お願いします。")
         speak("もう一度お願いします。")
@@ -55,42 +52,58 @@ def takeComand():
     return query
 
 
-def takeComand_two():
+def change_Ai_name(speak_pleas_list_choice, Ai_name):
+    while True:
+        try:
+            speak("私にどのような名前をくださるのですか?私の名前を言ってください。")
+            print("私にどのような名前をくださるのですか？私の名前を言ってください。")
+            query = takeComand(speak_pleas_list_choice)
+            query
+            if query == None:
+                continue
+            else:
+                speak(f"私の名前を{query}に変えますか？")
+                print(f"私の名前を{query}に変えますか？")
+                query = takeComand(speak_pleas_list_choice)
+                if "はい" in query.lower():
+                    speak(f"有り難うございます。今より{query}と呼んで下さい。")
+                    print(f"有り難うございます。今より{query}と呼んで下さい。")
+                    Ai_name = query
+                    break
+                else:
+                    print(f"分かりました、私の名前を変えないで{Ai_name}のままにしておきます。")
+                    speak(f"分かりました、私の名前を変えないで{Ai_name}のままにしておきます。")
+                    break
 
-    r = sr.Recognizer()
-
-    with sr.Microphone() as source:
-        print("かしこまりました。名前をお願いします。")
-        speak("かしこまりました。名前をお願いします。")
-        audio = r.listen(source)
-    try:
-        print("処理中です…")
-        speak("処理中です…")
-        middle_query = r.recognize_google(audio, language='ja-ja')
-        print(f"私の名前を{ middle_query}にしてよろしいですか。\n")
-        speak(f"私の名前を{ middle_query}にしてよろしいですか。\n")
-        query = takeComand()
-        if "はい" in query.lower():
-            print(f"{query}、と言いう名前をありがとうございます。これからは{query}と言ってください。")
-            speak(f"{query}、と言いう名前をありがとうございます。これからは{query}と言ってください。")
-        else:
-            print(f"{Ai_name}の名前を変えずにしておきます。")
-            speak(f"{Ai_name}の名前を変えずにしておきます。")
-    except Exception:
-        print("もう一度お願いします。")
-        speak("もう一度お願いします。")
-        middle_query = None
-    return middle_query
+        except Exception:
+            print("うまくいきませんでした。最初からやり直して下さい。")
+            speak("うまくいきませんでした。最初からやり直して下さい。")
+            continue
+    return 0
 
 
-# lists for random
+def wikipedia_search(query):
+    wikipedia.set_lang("ja")
+    print(query)
+    query = query.replace("はどこにあるのか教えてください", "").replace("は誰ですか教えてください", "").replace("は何ですか教えてください", "").replace("は何か教えてください", "").replace("は何ですか教えて", "").replace("は何か教えて", "").replace("はどこにあるのですか", "").replace(
+        "は誰ですか", "").replace("教えてください", "").replace("は何", "").replace("は誰", "").replace("教えて", "")
+
+    result_ja = wikipedia.summary(query, sentences=3)
+
+    print(result_ja)
+
+    speak(result_ja)
+    new = 2
+    url = 'https://www.google.com/search?q='
+    chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+    webbrowser.get(chrome_path).open(url + query, new=new)
+    print(query + "を検索しました。")
+    return 0
+
 
 beginning_list = ['初期化しています', '起動しています', '開始しています']
 beginning_list_choice = random.choice(beginning_list)
 speak_pleas_list = ['話しても良いですよ！.', f'{MASTER}様、命令をお願いします！', ]
-
-Ai_name = "バギー"
-speak_pleas_list_choice = random.choice(speak_pleas_list)
 
 
 def main(Ai_name):
@@ -99,9 +112,10 @@ def main(Ai_name):
     speak(Ai_name + "を" + beginning_list_choice + "...")
     wishMe()
     while True:
+        speak_pleas_list_choice = random.choice(speak_pleas_list)
 
         # random lists that runs with loop
-        query = takeComand()
+        query = takeComand(speak_pleas_list_choice)
         query
 
         # there was a bug witch alwas said None can't be in Lower case
@@ -114,16 +128,7 @@ def main(Ai_name):
             speak("わかりました.また使ってくださいね")
             break
         elif 'あなたの名前を変え' in query.lower():
-            speak("私にどのような名前をくださるのですか?")
-            print("私にどのような名前をくださるのですか?")
-            middle_query = takeComand_two()
-            middle_query
-            if middle_query == None:
-                speak("私に名前をください。")
-                print("私に名前をください。")
-            else:
-                Ai_name = middle_query
-
+            change_Ai_name(speak_pleas_list_choice, Ai_name)
         elif 'あなたの名前は' in query.lower():
 
             print(f"私の名前は{Ai_name}です")
@@ -201,10 +206,9 @@ def main(Ai_name):
 
         elif 'wikipedia で' in query.lower():
             try:
-                speak("ウィキペディアで検索ちゅ")
                 wikipedia.set_lang("ja")
-                query = query.replace("を Wikipedia で", "").replace("Wikipedia で", "").replace(
-                    "を調べて", "").replace("調べて", "").replace("`を検索", "").replace("検索", "")
+                query = query.replace("を Wikipedia で調べて", "").replace("を　Wikipedia で検索して", "").replace("を　Wikipedia で検索", "").replace("Wikipedia で調べて", "").replace("Wikipedia で検索して", "").replace("Wikipedia で検索", "").replace(
+                    "を調べて", "").replace("を検索", "")
                 results = wikipedia.summary(query, sentences=2)
                 print(results)
                 speak(results)
@@ -225,10 +229,8 @@ def main(Ai_name):
 
         elif "検索" and "youtube で" in query.lower():
             new = 4
-            speak("ユーチューブで検索")
-            print("ユーチューブで検索")
-            query = query.replace("を YouTube で", "").replace('YouTube で', "").replace(
-                "を調べて", "").replace("調べて", "").replace("を検索", "").replace('検索', "")
+            query = query.replace("を YouTube で検索して", "").replace('を YouTube で調べて', "").replace("を YouTube で検索", "").replace(
+                "を調べて", "").replace("調べて", "").replace("を検索して", "").replace('を検索', "")
             url = 'https://www.youtube.com/results?search_query='
             chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
             webbrowser.get(chrome_path).open(url + query, new=new)
@@ -239,10 +241,9 @@ def main(Ai_name):
             webbrowser.get(chrome_path).open(url)
 
         elif "検索" in query.lower():
-            speak("googleで検索ちゅ..")
-            print("googleで検索中..")
-            query = query.replace("を検索", "").replace("検索", "").replace(
-                "を Google で", "").replace("Google で", "").replace("を調べて", "").replace("調べて", "")
+            query = query.replace("をGoogle で検索して", "").replace("をGoogle で調べて", "").replace("Google で検索して", "").replace("Google で調べて", "").replace(
+                "をGoogle で", "").replace("でGoogle を", "").replace(
+                "Google で", "").replace("を検索して", "").replace("を調べて", "").replace("検索して", "").replace("調べて", "").replace("を検索", "")
             new = 2
             url = 'https://www.google.com/search?q='
             chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
@@ -250,19 +251,25 @@ def main(Ai_name):
             print(query + "を検索しました。")
 
         else:
-            try:
-                wikipedia.set_lang("ja")
-                result_ja = wikipedia.summary(query, sentences=3)
+            # try:
+            #     wikipedia.set_lang("ja")
+            #     result_ja = wikipedia.summary(query, sentences=3)
 
-                print(result_ja)
-                speak(result_ja)
-                new = 2
-                url = 'https://www.google.com/search?q='
-                chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-                webbrowser.get(chrome_path).open(url + query, new=new)
-                print(query + "を検索しました。")
-                q_l = query.lower
-                print(q_l)
+            #     print(result_ja)
+            #     speak(result_ja)
+            #     new = 2
+            #     url = 'https://www.google.com/search?q='
+            #     chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+            #     webbrowser.get(chrome_path).open(url + query, new=new)
+            #     print(query + "を検索しました。")
+            # except wikipedia.exceptions.PageError:
+            #     print("そのページは見つかりませんでした。言葉を変えてもう一度お願いします。")
+            #     speak("そのページは見つかりませんでした。言葉を変えてもう一度お願いします。")
+            # except (wikipedia.exceptions.DisambiguationError) as err:
+            #     print("この問いに値する解答がいくつも有ります。次の問い例に合わせてもう一度やり直してください。\n", err)
+            #     speak(f"この問いに値する解答がいくつも有ります。次の問い例に合わせてもう一度やり直してください。\n{err}")
+            try:
+                wikipedia_search(query)
             except wikipedia.exceptions.PageError:
                 print("そのページは見つかりませんでした。言葉を変えてもう一度お願いします。")
                 speak("そのページは見つかりませんでした。言葉を変えてもう一度お願いします。")

@@ -1,0 +1,100 @@
+# import pyttsx3
+# import speech_recognition
+# import wikipedia
+
+
+# import tkinter
+# import os
+
+
+# Installing Python packages
+# apt
+# Some Python packages can be found in the Raspberry Pi OS archives and can be installed using apt. For example:
+
+# sudo apt update
+# sudo apt install python3-picamera
+# This is the preferred method of installing software, as it means that the modules you install can be kept up to date easily with the usual sudo apt update and sudo apt full-upgrade commands.
+
+# Python packages in Raspberry Pi OS which are compatible with Python 2.x will always have a python- prefix. So, the picamera package for Python 2.x is named python-picamera (as shown in the example above). Python 3 packages always have a python3- prefix. So, to install picamera for Python 3 you would use:
+
+# sudo apt install python3-picamera
+# Uninstalling packages installed via APT can be accomplished as follows:
+
+# sudo apt remove python3-picamera
+# They can be completely removed with purge:
+
+# sudo apt purge python3-picamera
+# pip
+# Not all Python packages are available in the Raspberry Pi OS archives, and those that are can sometimes be out-of-date. If you can't find a suitable version in the Raspberry Pi OS archives, you can install packages from the Python Package Index (PyPI). To do so, use the pip tool.
+
+# pip is installed by default in Raspberry Pi OS Desktop images (but not Raspberry Pi OS Lite). You can install it with apt:
+
+# sudo apt install python3-pip
+# To get the Python 2 version:
+
+# sudo apt install python-pip
+# pip3 installs modules for Python 3, and pip installs modules for Python 2.
+
+# For example, the following command installs the Unicorn HAT library for Python 3:
+
+# sudo pip3 install unicornhat
+# The following command installs the Unicorn HAT library for Python 2:
+
+# sudo pip install unicornhat
+# Uninstall Python modules with sudo pip3 uninstall or sudo pip uninstall.
+
+# Upload your own Python modules to pip with the guide at PyPI.
+
+# piwheels
+# The official Python Package Index (PyPI) hosts files uploaded by package maintainers. Some packages require compilation (compiling C/C++ or similar code) in order to install them, which can be a time-consuming task, particlarly on the single-core Raspberry Pi 1 or Pi Zero.
+
+
+# sudo apt install python3-pip
+# sudo pip3 install pyttsx3
+# sudo pip3 install wikipedia
+# sudo pip3 install tkinter
+# sudo pip3 install os
+# sudo pip3 install webbrowser
+
+
+# or may be this is the reson
+
+
+import pyttsx3
+
+engine = pyttsx3.init()
+
+engine.setProperty('rate', 150)
+engine.setProperty('volume', 0.5)
+voices = engine.getProperty('voices')
+for voice in voices:
+    engine.setProperty('voice', voice.id)
+    # engine.say('The quick brown fox jumped over the lazy dog.')
+    engine.say("Hello, I am robot")
+engine.runAndWait()
+
+
+or change
+
+sudo apt-get install espeak
+
+engine = pyttsx3.init('espeak')
+
+
+about espeak
+
+There are two versions of the command line program. They both have the same command parameters(see below).
+espeak uses speech engine in the libespeak shared library. The libespeak library must first be installed.
+speak is a stand-alone version which includes its own copy of the speech engine.
+Place the espeak or speak executable file in the command path, eg in / usr/local/bin
+Place the "espeak-data" directory in / usr/share as / usr/share/espeak-data.
+Alternatively if it is placed in the user's home directory(i.e. / home/<user > /espeak-data) then that will be used instead.
+
+Dependencies
+espeak uses the PortAudio sound library(version 18), so you will need to have the libportaudio0 library package installed. It may be already, since it's used by other software, such as OpenOffice.org and the Audacity sound editor.
+Some Linux distrubitions(eg. SuSe 10) have version 19 of PortAudio which has a slightly different API. The speak program can be compiled to use version 19 of PortAudio by copying the file portaudio19.h to portaudio.h before compiling.
+
+The speak program may be compiled without using PortAudio, by removing the line
+
+# define USE_PORTAUDIO
+in the file speech.h.

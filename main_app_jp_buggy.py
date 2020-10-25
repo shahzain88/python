@@ -5,14 +5,14 @@
 
 from tkinter import *
 
-from app_jp_buggy import main, Ai_name
+from seek_call_for_buggy import basecamp
 
 
 # defining a command for a button
 
 # in it we run main()
 def start_buggy():
-    main(Ai_name)
+    basecamp()
 
 
 # declare the window
